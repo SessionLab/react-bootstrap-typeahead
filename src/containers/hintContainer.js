@@ -51,6 +51,7 @@ function hintContainer(Input) {
         inputRef,
         onAdd,
         selectHintOnEnter,
+        highlightFirstResult,
         ...props
       } = this.props;
 
