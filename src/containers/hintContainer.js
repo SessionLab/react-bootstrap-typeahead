@@ -92,7 +92,6 @@ function hintContainer(Input) {
 
     _handleKeyDown = (e) => {
       const {initialItem, onAdd, onKeyDown} = this.props;
-
       if (shouldSelectHint(e, this.props)) {
         e.preventDefault(); // Prevent input from blurring on TAB.
         onAdd(initialItem);
@@ -107,6 +106,7 @@ function hintContainer(Input) {
     'initialItem',
     'onAdd',
     'selectHintOnEnter',
+    'highlightFirstResult',
   ]);
 }
 

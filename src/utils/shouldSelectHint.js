@@ -2,9 +2,10 @@ import isSelectable from './isSelectable';
 import {RETURN, RIGHT, TAB} from '../constants';
 
 export default function shouldSelectHint(e, props) {
-  const {hintText, selectHintOnEnter, value} = props;
+  const {hintText, selectHintOnEnter, highlightFirstResult, value} = props;
+  const shouldTrigger = selectHintOnEnter || highlightFirstResult;
 
-  if (!hintText) {
+  if (!hintText && !highlightFirstResult) {
     return false;
   }
 
@@ -21,9 +22,5 @@ export default function shouldSelectHint(e, props) {
     return true;
   }
 
-  if (e.keyCode === RETURN && selectHintOnEnter) {
-    return true;
-  }
-
-  return false;
+  return !!(e.keyCode === RETURN && shouldTrigger);
 }

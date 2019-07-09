@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {findDOMNode} from 'react-dom';
 
 import {withContext} from '../TypeaheadContext';
-import {getDisplayName, getMenuItemId, preventInputBlur, scrollIntoViewIfNeeded} from '../utils';
+import {getDisplayName, getMenuItemId, preventInputBlur, scrollIntoViewIfNeeded, getFirstResult} from '../utils';
 
 const menuItemContainer = (Component) => {
   class WrappedMenuItem extends React.Component {
@@ -25,12 +25,15 @@ const menuItemContainer = (Component) => {
         onActiveItemChange,
         onInitialItemChange,
         onMenuItemClick,
+        highlightFirstResult,
         option,
         position,
         ...props
       } = this.props;
 
-      const active = isOnlyResult || activeIndex === position;
+      const active = isOnlyResult ||
+        activeIndex === position ||
+        getFirstResult(this.props);
 
       return (
         <Component
@@ -90,6 +93,7 @@ const menuItemContainer = (Component) => {
     'onActiveItemChange',
     'onInitialItemChange',
     'onMenuItemClick',
+    'highlightFirstResult',
   ]);
 };
 

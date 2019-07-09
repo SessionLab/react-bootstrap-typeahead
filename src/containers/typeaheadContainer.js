@@ -301,6 +301,9 @@ function typeaheadContainer(Component) {
     _handleKeyDown = (e, results, isMenuShown) => {
       const {activeItem} = this.state;
       let {activeIndex} = this.state;
+      const downIndexCorrection =
+        this.props.highlightFirstResult &&
+        this.state.activeIndex === -1;
 
       switch (e.keyCode) {
         case UP:
@@ -314,7 +317,7 @@ function typeaheadContainer(Component) {
           e.preventDefault();
 
           // Increment or decrement index based on user keystroke.
-          activeIndex += e.keyCode === UP ? -1 : 1;
+          activeIndex += e.keyCode === UP ? -1 : (1 + downIndexCorrection);
 
           // Skip over any disabled options.
           activeIndex = skipDisabledOptions(results, activeIndex, e.keyCode);
@@ -545,6 +548,10 @@ function typeaheadContainer(Component) {
      */
     flip: PropTypes.bool,
     /**
+     * Highlights the first menu item
+     */
+    highlightFirstResult: PropTypes.bool,
+    /**
      * Highlights the menu item if there is only one result and allows selecting
      * that item by hitting enter. Does not work with `allowNew`.
      */
@@ -705,6 +712,7 @@ function typeaheadContainer(Component) {
     emptyLabel: 'No matches found.',
     filterBy: [],
     flip: false,
+    highlightFirstResult: false,
     highlightOnlyResult: false,
     ignoreDiacritics: true,
     inputProps: {},

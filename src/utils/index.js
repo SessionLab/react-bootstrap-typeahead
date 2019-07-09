@@ -7,6 +7,7 @@ export getDisplayName from './getDisplayName';
 export getHintText from './getHintText';
 export getInputText from './getInputText';
 export getIsOnlyResult from './getIsOnlyResult';
+export getFirstResult from './getFirstResult';
 export getMatchBounds from './getMatchBounds';
 export getMenuItemId from './getMenuItemId';
 export getOptionLabel from './getOptionLabel';
