@@ -22,8 +22,9 @@ class AsyncExample extends React.Component {
       <Fragment>
         <AsyncTypeahead
           {...this.state}
+          highlightFirstResult
           labelKey="login"
-          minLength={3}
+          minLength={1}
           onSearch={this._handleSearch}
           placeholder="Search for a Github user..."
           renderMenuItemChildren={(option, props) => (

@@ -26,6 +26,8 @@ function contextContainer(Typeahead) {
         'onMenuItemClick',
         'selectHintOnEnter',
         'highlightFirstResult',
+        'isMenuShown',
+        'minLength',
       ]);
 
       return (

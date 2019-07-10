@@ -12,7 +12,11 @@ class PublicMethodsExample extends React.Component {
     return (
       <Fragment>
         <Typeahead
-          defaultSelected={options.slice(0, 4)}
+          allowNew
+          highlightFirstResult
+          defaultSelected={[]}
+          minLength={1}
+          id="id"
           labelKey="name"
           multiple
           options={options}

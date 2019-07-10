@@ -19,6 +19,8 @@ class BasicExample extends React.Component {
     return (
       <Fragment>
         <Typeahead
+          highlightFirstResult
+          id="basic-example"
           labelKey="name"
           multiple={multiple}
           options={options}

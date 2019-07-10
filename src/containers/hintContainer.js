@@ -108,6 +108,8 @@ function hintContainer(Input) {
     'onAdd',
     'selectHintOnEnter',
     'highlightFirstResult',
+    'isMenuShown',
+    'minLength',
   ]);
 }
 
