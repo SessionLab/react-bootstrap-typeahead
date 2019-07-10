@@ -4,7 +4,7 @@
   "description": "React typeahead with Bootstrap styling",
   "author": "ericgio",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:css && npm run build:lib && npm run build:dist && npm run build:example",
     "build:css": "node ./scripts/buildCSS.js",
