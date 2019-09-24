@@ -9,8 +9,10 @@ import getStringLabelKey from './getStringLabelKey';
  * an error.
  */
 function getOptionLabel(option, labelKey) {
-  if (option.paginationOption || option.customOption) {
-    return option[getStringLabelKey(labelKey)];
+  if (option) {
+    if (option.paginationOption || option.customOption) {
+      return option[getStringLabelKey(labelKey)];
+    }
   }
 
   let optionLabel;
