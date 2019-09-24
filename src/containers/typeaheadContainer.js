@@ -392,14 +392,18 @@ function typeaheadContainer(Component) {
       let selected;
       let text;
 
+      if (!selection) {
+        return;
+      }
+
       if (multiple) {
         // If multiple selections are allowed, add the new selection to the
         // existing selections.
         selected = this.state.selected.concat(selection);
         text = '';
       } else {
-        // If only a single selection is allowed, replace the existing selection
-        // with the new one.
+        // If only a single selection is allowed, replace the existing
+        // selection with the new one.
         selected = [selection];
         text = getOptionLabel(selection, labelKey);
       }
