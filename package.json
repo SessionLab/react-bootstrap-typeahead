@@ -1,6 +1,6 @@
 {
-  "name": "react-bootstrap-typeahead-selectable-first",
-  "version": "0.0.1",
+  "name": "react-bootstrap-typeahead",
+  "version": "3.4.5-1",
   "description": "React typeahead with Bootstrap styling",
   "author": "ericgio",
   "license": "MIT",
