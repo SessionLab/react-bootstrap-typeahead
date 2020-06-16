@@ -7,13 +7,27 @@ type Props = {
   hintText: string,
   selectHintOnEnter: boolean,
   value: string,
+  highlightFirstResult: boolean,
+  isMenuShown: boolean,
+  initialItem: Object,
+  minLength: number
 };
 
 export default function shouldSelectHint(
   { currentTarget, keyCode }: SyntheticKeyboardEvent<HTMLInputElement>,
-  { hintText, selectHintOnEnter, value }: Props
+  {
+    hintText,
+    selectHintOnEnter,
+    value,
+    highlightFirstResult,
+    isMenuShown,
+    initialItem,
+    minLength,
+  }: Props
 ): boolean {
-  if (!hintText) {
+  const shouldTrigger = selectHintOnEnter || highlightFirstResult;
+
+  if (!hintText && !highlightFirstResult) {
     return false;
   }
 
@@ -27,12 +41,14 @@ export default function shouldSelectHint(
   }
 
   if (keyCode === TAB) {
-    return true;
+    if (highlightFirstResult && !initialItem) {
+      return false;
+    }
+    if (highlightFirstResult && minLength === 0) {
+      return false;
+    }
+    return !(highlightFirstResult && !isMenuShown);
   }
 
-  if (keyCode === RETURN && selectHintOnEnter) {
-    return true;
-  }
-
-  return false;
+  return !!(keyCode === RETURN && shouldTrigger);
 }

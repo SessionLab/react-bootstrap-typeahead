@@ -48,6 +48,8 @@ const typeaheadContextKeys = [
   'onInitialItemChange',
   'onMenuItemClick',
   'selectHintOnEnter',
+  'highlightFirstResult',
+  'minLength',
   'setItem',
 ];
 

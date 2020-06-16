@@ -91,11 +91,14 @@ const propTypes = {
     PropTypes.arrayOf(PropTypes.string.isRequired),
     PropTypes.func,
   ]),
+  highlightFirstResult: checkPropType(PropTypes.bool),
+
   /**
    * Highlights the menu item if there is only one result and allows selecting
    * that item by hitting enter. Does not work with `allowNew`.
    */
   highlightOnlyResult: checkPropType(PropTypes.bool, highlightOnlyResultType),
+
   /**
    * An html id attribute, required for assistive technologies such as screen
    * readers.
@@ -195,6 +198,7 @@ const defaultProps = {
   defaultOpen: false,
   defaultSelected: [],
   filterBy: [],
+  highlightFirstResult: false,
   highlightOnlyResult: false,
   ignoreDiacritics: true,
   labelKey: DEFAULT_LABELKEY,
@@ -540,7 +544,8 @@ class Typeahead extends React.Component<Props, TypeaheadState> {
         this._handleActiveIndexChange(getUpdatedActiveIndex(
           this.state.activeIndex,
           e.keyCode,
-          this.items
+          this.items,
+          this.props.highlightFirstResult
         ));
         break;
       case RETURN:
@@ -583,6 +588,10 @@ class Typeahead extends React.Component<Props, TypeaheadState> {
     let selected;
     let selection = option;
     let text;
+
+    if (!selection) {
+      return;
+    }
 
     // Add a unique id to the custom selection. Avoid doing this in `render` so
     // the id doesn't increment every time.

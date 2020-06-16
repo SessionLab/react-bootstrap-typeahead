@@ -5,7 +5,7 @@ import React, { type ComponentType } from 'react';
 import PropTypes from 'prop-types';
 
 import { withContext } from '../core/Context';
-import { getDisplayName, getMenuItemId, preventInputBlur } from '../utils';
+import { getDisplayName, getMenuItemId, preventInputBlur, getFirstResult } from '../utils';
 
 import type { Option } from '../types';
 
@@ -46,13 +46,16 @@ const menuItemContainer = (Component: ComponentType<*>) => {
         onActiveItemChange,
         onInitialItemChange,
         onMenuItemClick,
+        highlightFirstResult,
         option,
         position,
         setItem,
         ...props
       } = this.props;
 
-      const active = isOnlyResult || activeIndex === position;
+      const active = isOnlyResult ||
+        activeIndex === position ||
+        getFirstResult(this.props);
 
       // Update the item's position in the item stack.
       setItem(option, position);
@@ -116,6 +119,7 @@ const menuItemContainer = (Component: ComponentType<*>) => {
     'onActiveItemChange',
     'onInitialItemChange',
     'onMenuItemClick',
+    'highlightFirstResult',
     'setItem',
   ]);
 };

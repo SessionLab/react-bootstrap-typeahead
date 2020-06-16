@@ -20,12 +20,16 @@ function skipDisabledOptions(
 export default function getUpdatedActiveIndex(
   currentIndex: number,
   keyCode: DOWN | UP,
-  items: Option[]
+  items: Option[],
+  highlightFirstResult: boolean
 ): number {
   let newIndex = currentIndex;
 
+  // if first item already selected, we need to "correct" new index by this
+  const downIndexCorrection = highlightFirstResult && currentIndex === -1;
+
   // Increment or decrement index based on user keystroke.
-  newIndex += keyCode === UP ? -1 : 1;
+  newIndex += keyCode === UP ? -1 : (1 + downIndexCorrection);
 
   // Skip over any disabled options.
   newIndex = skipDisabledOptions(newIndex, keyCode, items);

@@ -70,6 +70,9 @@ function hintContainer(Input: ComponentType<*>) {
         inputNode,
         onAdd,
         selectHintOnEnter,
+        highlightFirstResult,
+        isMenuShown,
+        minLength,
         ...props
       } = this.props;
 
@@ -127,6 +130,9 @@ function hintContainer(Input: ComponentType<*>) {
     'inputNode',
     'onAdd',
     'selectHintOnEnter',
+    'highlightFirstResult',
+    'isMenuShown',
+    'minLength',
   ]);
 
   return React.forwardRef<{}, ?HTMLInputElement>((props, ref) => (

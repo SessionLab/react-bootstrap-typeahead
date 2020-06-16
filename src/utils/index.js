@@ -12,6 +12,7 @@ export getOptionProperty from './getOptionProperty';
 export getStringLabelKey from './getStringLabelKey';
 export getTruncatedOptions from './getTruncatedOptions';
 export getUpdatedActiveIndex from './getUpdatedActiveIndex';
+export getFirstResult from './getFirstResult';
 export isSelectable from './isSelectable';
 export isShown from './isShown';
 export * from './nodash';

@@ -19,6 +19,7 @@ export type TypeaheadContextType = {
   onInitialItemChange: (?Option) => void,
   onMenuItemClick: (Option, SyntheticEvent<HTMLElement>) => void,
   selectHintOnEnter: boolean,
+  highlightFirstResult: boolean
 };
 
 export const TypeaheadContext: Context<TypeaheadContextType> =
