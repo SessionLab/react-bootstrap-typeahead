@@ -15,6 +15,7 @@ const BasicExample = () => {
   return (
     <Fragment>
       <Typeahead
+        highlightFirstResult
         id="basic-typeahead-example"
         labelKey="name"
         multiple={multiple}

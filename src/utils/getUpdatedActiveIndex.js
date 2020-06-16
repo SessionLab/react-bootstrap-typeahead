@@ -25,11 +25,16 @@ export default function getUpdatedActiveIndex(
 ): number {
   let newIndex = currentIndex;
 
-  // if first item already selected, we need to "correct" new index by this
-  const downIndexCorrection = highlightFirstResult && currentIndex === -1;
-
   // Increment or decrement index based on user keystroke.
-  newIndex += keyCode === UP ? -1 : (1 + downIndexCorrection);
+  if (highlightFirstResult) {
+    // if first item already selected, we need to move to second one with
+    // down arrow
+    const downIndexCorrection = currentIndex === -1 ? 1 : 0;
+
+    newIndex += keyCode === UP ? -1 : 1 + downIndexCorrection;
+  } else {
+    newIndex += keyCode === UP ? -1 : 1;
+  }
 
   // Skip over any disabled options.
   newIndex = skipDisabledOptions(newIndex, keyCode, items);
