@@ -10,3 +10,4 @@ node_modules/
 example/package-example.js
 npm-debug.log
 yarn-error.log
+.idea
