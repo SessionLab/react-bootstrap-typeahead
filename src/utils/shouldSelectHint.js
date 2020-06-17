@@ -1,29 +1,54 @@
+// @flow
+
 import isSelectable from './isSelectable';
-import {RETURN, RIGHT, TAB} from '../constants';
+import { RETURN, RIGHT, TAB } from '../constants';
 
-export default function shouldSelectHint(e, props) {
-  const {hintText, selectHintOnEnter, value} = props;
+type Props = {
+  hintText: string,
+  selectHintOnEnter: boolean,
+  value: string,
+  highlightFirstResult: boolean,
+  isMenuShown: boolean,
+  initialItem: Object,
+  minLength: number
+};
 
-  if (!hintText) {
+export default function shouldSelectHint(
+  { currentTarget, keyCode }: SyntheticKeyboardEvent<HTMLInputElement>,
+  {
+    hintText,
+    selectHintOnEnter,
+    value,
+    highlightFirstResult,
+    isMenuShown,
+    initialItem,
+    minLength,
+  }: Props
+): boolean {
+  const shouldTrigger = selectHintOnEnter || highlightFirstResult;
+
+  if (!hintText && !highlightFirstResult) {
     return false;
   }
 
-  if (e.keyCode === RIGHT) {
+  if (keyCode === RIGHT) {
     // For selectable input types ("text", "search"), only select the hint if
     // it's at the end of the input value. For non-selectable types ("email",
     // "number"), always select the hint.
-    return isSelectable(e.target) ?
-      e.target.selectionStart === value.length :
+    return isSelectable(currentTarget) ?
+      currentTarget.selectionStart === value.length :
       true;
   }
 
-  if (e.keyCode === TAB) {
-    return true;
+  if (keyCode === TAB) {
+    if (highlightFirstResult && !initialItem) {
+      return false;
+    }
+    if (highlightFirstResult && minLength === 0) {
+      return false;
+    }
+    return !(highlightFirstResult && !isMenuShown);
   }
 
-  if (e.keyCode === RETURN && selectHintOnEnter) {
-    return true;
-  }
-
-  return false;
+  return !!(keyCode === RETURN && shouldTrigger);
 }

@@ -4,7 +4,8 @@ A [React](https://reactjs.org/)-based typeahead that relies on [Bootstrap](https
 [![npm version](https://img.shields.io/npm/v/react-bootstrap-typeahead.svg?style=flat-square)](https://www.npmjs.com/package/react-bootstrap-typeahead)
 [![npm downloads](https://img.shields.io/npm/dm/react-bootstrap-typeahead.svg?style=flat-square)](https://www.npmjs.com/package/react-bootstrap-typeahead)
 [![build status](https://img.shields.io/travis/ericgio/react-bootstrap-typeahead/master.svg?style=flat-square)](https://travis-ci.org/ericgio/react-bootstrap-typeahead)
-[![cdnjs](https://img.shields.io/cdnjs/v/react-bootstrap-typeahead.svg?style=flat-square)](https://cdnjs.com/libraries/react-bootstrap-typeahead)
+[![Coveralls github](https://img.shields.io/coveralls/github/ericgio/react-bootstrap-typeahead/4.0.svg?style=flat-square)](https://coveralls.io/github/ericgio/react-bootstrap-typeahead)
+[![MIT License](https://flat.badgen.net/github/license/ericgio/react-bootstrap-typeahead)](LICENSE.md)
 
 Please note that documentation and examples apply to the most recent release and may no longer be applicable if you're using an outdated version.
 
@@ -55,6 +56,14 @@ In an effort to fully support Bootstrap 4, this package also contains a CSS file
 
 ## Examples
 Try the [live examples](http://ericgio.github.io/react-bootstrap-typeahead/), which also include code samples. If you'd like to modify the examples, clone the repository and run `npm install` and `npm start` to build the example file. You can then open the HTML file locally in your browser.
+
+You can also try out the following sandbox examples:
+- [Windowing with large data sets](https://codesandbox.io/s/react-bootstrap-typeahead-windowing-example-4q1yjrzrn0)
+- [Asynchronous Pagination](https://codesandbox.io/s/react-bootstrap-typeahead-async-pagination-example-qg895)
+- [Combobox Example](https://codesandbox.io/s/rbt-combobox-example-kkmyd)
+- [Validation and Feedback](https://codesandbox.io/s/rbt-validation-feedback-example-4w01px4z6x)
+
+If you have an example use case that would be useful to others, please create a sandbox and submit a pull request to add it to the list!
 
 ## Browser Support
 Recent versions of the following browsers are supported:
