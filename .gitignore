@@ -2,7 +2,6 @@ coverage/
 css/
 dist/
 es/
-lib/
 node_modules/
 
 .DS_Store
