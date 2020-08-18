@@ -584,12 +584,16 @@ class Typeahead extends React.Component<Props, TypeaheadState> {
 
   _handleSelectionAdd = (option: Option) => {
     const { multiple, labelKey } = this.props;
+    const { activeIndex, initialItem } = this.state;
 
     let selected;
     let selection = option;
     let text;
 
-    if (!selection) {
+    // prevent initialItem to be selected when selecting others
+    const hasInitialItemSelected = activeIndex > 0 && (isEqual(selection, initialItem));
+
+    if (!selection || hasInitialItemSelected) {
       return;
     }
 
