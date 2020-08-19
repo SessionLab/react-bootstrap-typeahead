@@ -105,7 +105,7 @@ class TypeaheadManager extends React.Component<TypeaheadManagerProps> {
 
     switch (e.keyCode) {
       case RETURN:
-        if (initialItem && getIsOnlyResult(this.props)) {
+        if (initialItem && getIsOnlyResult(this.props) && !this.props.highlightFirstResult) {
           onAdd(initialItem);
         }
         break;

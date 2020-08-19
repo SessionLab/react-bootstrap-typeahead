@@ -2,7 +2,6 @@
 
 import React, { type ComponentType } from 'react';
 
-import { RETURN } from '../constants';
 import { withContext } from '../core/Context';
 import { getDisplayName, shouldSelectHint } from '../utils';
 
@@ -119,9 +118,6 @@ function hintContainer(Input: ComponentType<*>) {
       if (shouldSelectHint(e, this.props)) {
         e.preventDefault(); // Prevent input from blurring on TAB.
         onAdd(initialItem);
-        if ((e.keyCode !== RETURN) && this.props.highlightFirstResult) {
-          return;
-        }
       }
 
       onKeyDown(e);

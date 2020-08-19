@@ -16,6 +16,9 @@ const BasicExample = () => {
     <Fragment>
       <Typeahead
         highlightFirstResult
+        autoFocus
+        flip
+        allowNew
         id="basic-typeahead-example"
         labelKey="name"
         multiple={multiple}
