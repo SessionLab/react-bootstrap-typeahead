@@ -35,6 +35,7 @@ const AsyncExample = () => {
 
   return (
     <AsyncTypeahead
+      highlightFirstResult
       id="async-example"
       isLoading={isLoading}
       labelKey="login"
